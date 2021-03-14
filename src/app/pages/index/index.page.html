@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Fórum Livre</ion-title>
+    <ion-title slot="end">
+      <ion-text routerLink="/login" *ngIf="!user">Entrar</ion-text>
+      <ion-text routerLink="/logout" *ngIf="user">sair</ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<h2>indexado</h2>
+</ion-content>

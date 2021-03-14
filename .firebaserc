@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "mobileproject-87ca0": {
+      "hosting": {
+        "app": [
+          "mobileproject-87ca0"
+        ]
+      }
+    }
+  }
+}
