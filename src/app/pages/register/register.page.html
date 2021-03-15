@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input type="text" name="nome" [(ngModel)]=user.nome required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input type="email" name="email" [(ngModel)]=user.email required
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"></ion-input>
+    </ion-item>
+    <div *ngIf="!id">
+      <ion-item>
+        <ion-label position="floating"> Senha <ion-text color="danger" *ngIf="s.invalid && s.dirty"><b>Senha
+              invalida</b> </ion-text>
+        </ion-label>
+        <ion-input type="password" name="senha" [(ngModel)]=user.senha required #s="ngModel" minlength="6">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Confirmar Senha <ion-text color="danger" *ngIf="c.value != s.value && c.dirty">
+            <b>Senhas diferentes!</b> </ion-text>
+        </ion-label>
+        <ion-input type="password" name="conf" [(ngModel)]="conf" required #c="ngModel"></ion-input>
+      </ion-item>
+
+      <ion-button type="submit" color="primary" expand="block" [disabled]="form.invalid || (c.value != s.value)">Cadastrar
+      </ion-button>
+    </div>
+    <ion-button color="danger" expand="block" routerLink="/">Cancelar</ion-button>
+
+  </form>
+</ion-content>
