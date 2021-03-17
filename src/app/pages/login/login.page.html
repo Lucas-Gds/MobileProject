@@ -20,13 +20,25 @@
       <ion-input type="password" name="senha" [(ngModel)]=senha required>
       </ion-input>
     </ion-item>
+  <ion-list class="ion-text-center">
+    <ion-button type="submit" color="success" [disabled]="form.invalid">Entrar</ion-button>
 
-    <ion-button type="submit" color="primary" expand="block" [disabled]="form.invalid">Entrar</ion-button>
-
-    <ion-button type="reset" color="danger" expand="block" routerLink="/">Cancelar</ion-button> 
-    <div *ngIf="e.value">
-      <ion-button type="button" color="danger" (click)="RecoveryPass(email)">Esqueci minha senha</ion-button>
-    </div>
+    <ion-button type="reset" color="danger" routerLink="/">Cancelar</ion-button>
+  </ion-list>
+     
   </form>
-  <ion-button type="button" color="warning"><ion-text routerLink="/register">Registrar</ion-text></ion-button>
+<ion-list style="margin-top: 20px">
+    <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+        <ion-button type="button" color="danger" (click)="RecoveryPass(email)">Esqueci minha senha</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+        <ion-button type="button" color="warning"><ion-text routerLink="/register">Registrar</ion-text></ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-list>
 </ion-content>
