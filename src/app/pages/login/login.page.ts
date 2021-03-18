@@ -42,7 +42,8 @@ export class LoginPage implements OnInit {
       
     ).then(
       ()=>{
-        this.router.navigate(["/"]);
+        this.msg.presentAlert("Sucesso", "E-mail de recuperação enviado para sua caixa de mensagens");
+        this.router.navigate(["/perfil"]);
       },
       err=>{
         console.log("Erro de recuperação:", err);

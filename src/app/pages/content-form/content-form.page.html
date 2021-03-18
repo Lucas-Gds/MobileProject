@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>content-form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="CreateTopic(form)" #form="ngForm">
+    <ion-item>
+      <ion-label position="floating">titulo</ion-label>
+      <ion-input type="text" name="title" [(ngModel)]=topic.title required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">texto</ion-label>
+      <ion-textarea type="email" name="content" [(ngModel)]=topic.content required></ion-textarea>
+    </ion-item>
+    <!-- <ion-item>
+      <ion-text>{{idUser.id}}</ion-text>
+    </ion-item> -->
+<div>
+  <ion-button type="submit" color="primary" expand="block" [disabled]="form.invalid">Criar Tópico</ion-button>
+</div>
+
+    <ion-button color="danger" expand="block" routerLink="/">Cancelar</ion-button>
+  </form>
+</ion-content>

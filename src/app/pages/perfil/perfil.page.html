@@ -27,15 +27,34 @@
     <ion-text>{{user.nome}}</ion-text>
     </ion-item>
     <ion-item>
+      <ion-label position="floating">Novo Nome</ion-label>
+            <ion-input type="text" name="upName" [(ngModel)]="upName" required
+               #username="ngModel"></ion-input>
+          <ion-button color="warning" (click)="changeName()" [disabled]="(!username.value)">Mudar Nome</ion-button>
+    </ion-item>
+    <ion-item>
       <ion-label>E-mail</ion-label>
       <ion-text>{{user.email}}</ion-text>
     </ion-item>
+    <ion-item>
+      <ion-label position="floating">Novo E-mail</ion-label>
+            <ion-input type="email" name="updateemail" [(ngModel)]="updateemail" required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #useremail="ngModel"></ion-input>
+          <ion-button color="warning" (click)="changeEmail()" [disabled]="useremail.invalid || (!useremail.value)">Mudar E-mail</ion-button>
+    </ion-item>
   </ion-list>
-  <ion-list style="margin-top: 20px">
-    <section>
-      <ion-button color="warning" style="margin-left: 15px">Mudar senha</ion-button>
-      <ion-button color="warning" style="margin-left: 35px">mudar E-mail</ion-button>
-    </section>
+  <!-- <ion-list style="margin-top: 20px">
+      <ion-item>
+        <ion-button color="warning"  (click)="ChangePass()">Mudar Senha</ion-button>
+      </ion-item>
+  </ion-list> -->
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Nova Senha</ion-label>
+            <ion-input type="password" name="upPassword" [(ngModel)]="upPassword" required
+              #userpass="ngModel"></ion-input>
+          <ion-button color="warning" (click)="ChangePass()" [disabled]="(!userpass.value)">Alterar Senha</ion-button>
+    </ion-item>
   </ion-list>
  
 </ion-content>

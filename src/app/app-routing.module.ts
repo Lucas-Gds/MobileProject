@@ -30,7 +30,15 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },  {
+    path: 'topics',
+    loadChildren: () => import('./pages/topics/topics.module').then( m => m.TopicsPageModule)
+  },
+  {
+    path: 'content-form',
+    loadChildren: () => import('./pages/content-form/content-form.module').then( m => m.ContentFormPageModule)
   }
+
 ];
 
 @NgModule({

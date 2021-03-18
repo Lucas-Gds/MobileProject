@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { User } from '../models/user';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -49,12 +50,23 @@ export class UserService {
   get(id:string){
     return this.fireDB.collection(this.colletionUser).doc<User>(id).valueChanges();
   }
-  updatePassword(){
-    
+  updateEmail(userUp : User){
+    return this.fireDB.collection(this.colletionUser).doc(userUp.id).update(
+      {
+        ativo: true,
+        email: userUp.email,
+        nome: userUp.nome,
+      }
+    )
   }
-
-  updateEmail(){
-
+  updateName(userUp: User){
+    return this.fireDB.collection(this.colletionUser).doc(userUp.id).update(
+      {
+        ativo: true,
+        email: userUp.email,
+        nome: userUp.nome,
+      }
+    )
   }
   remover(id:string){
     return this.fireDB.collection(this.colletionUser).doc(id).delete();

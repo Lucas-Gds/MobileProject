@@ -6,7 +6,17 @@
     <ion-title>Fórum Livre</ion-title>
   </ion-toolbar>
 </ion-header>
-
+<ion-button color="warning" routerLink="/content-form" *ngIf="userForindex">Criar Tópico</ion-button>
 <ion-content>
-<h2>indexado</h2>
+ <div *ngIf="topics">
+  <ion-item lines="inset" *ngFor="let t of topics">
+    <title>{{t.title}}</title>
+    <p>{{t.content}}</p>
+  </ion-item>
+ </div>
+    <div *ngIf="!topics">
+      <h2>Sem Novos Tópicos no Momento</h2>
+    </div>
+
+
 </ion-content>

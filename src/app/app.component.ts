@@ -4,6 +4,7 @@ import { ActionSheetController } from '@ionic/angular';
 import { User } from './models/user';
 import { LoadingsService } from './services/loadings.service';
 import { UserService } from './services/user.service';
+import { IndexPage } from 'src/app/pages/index/index.page'
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -29,7 +30,8 @@ export class AppComponent {
     private userService: UserService,
     private router: Router,
     public msg: LoadingsService,
-    public actionSheetController:ActionSheetController
+    public actionSheetController:ActionSheetController,
+ //  public index: IndexPage 
   ) { }
 
   async ngOnInit() {
@@ -39,8 +41,10 @@ export class AppComponent {
     await this.userService.auth.user.subscribe(
       res => {
         if (res)
+        this.id = res.uid;
           this.userService.get(res.uid).subscribe(
             res => {
+
               this.user = res;
             }
           )
@@ -53,9 +57,13 @@ export class AppComponent {
   async logout() {
     await this.msg.presentLoading();
     await this.userService.auth.signOut().then(async () => { 
-      await this.msg.dismissLoading();
-      this.user = null;  
-      this.router.navigate(["/"])
+      
+      await this.msg.dismissLoading(); 
+      await this.msg.presentLoading();
+      this.user = null; 
+ //     this.index.userForindex = null;
+      await this.msg.dismissLoading(); 
+      this.router.navigate(["/about"])
     } )
   }
 }
