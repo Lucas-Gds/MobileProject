@@ -7,6 +7,7 @@ import { Comments } from 'src/app/models/comments';
 import { LoadingsService } from 'src/app/services/loadings.service';
 import { ContentService } from 'src/app/services/content.service';
 import { UserService } from 'src/app/services/user.service'
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-topics',
@@ -14,7 +15,7 @@ import { UserService } from 'src/app/services/user.service'
   styleUrls: ['./topics.page.scss'],
 })
 export class TopicsPage implements OnInit {
-  
+  private subscription5: Subscription;
   public id: string = null;
   public id2: string = null;
   public id3: string = null;
@@ -23,7 +24,7 @@ export class TopicsPage implements OnInit {
   public topic: Topic = new Topic();
   public comment: Comments = new Comments();
   public comments: Comments[] = [];
- // public comments2: Comments[] = [];
+  public usersName: User[] = [];
 
   constructor(
     private contentService: ContentService,
@@ -35,6 +36,7 @@ export class TopicsPage implements OnInit {
 
   async ngOnInit() {
    await this.getCommentsByid();
+   await this.getAllUsers();
    await this.verfUser();
     this.id = this.activatedRoute.snapshot.paramMap.get("id");
     if(this.id){
@@ -69,6 +71,21 @@ export class TopicsPage implements OnInit {
       }
     )
   }
+  // async getComments() {
+  //   if (!this.id)
+  //     return;
+  //   if (this.subscription5 && !this.subscription5.closed)
+  //     this.subscription5.unsubscribe();
+  //   this.subscription5 = this.contentService.getAllFromComments(this.topic.topicId).subscribe(ans => {
+  //     this.comments = ans;
+  //     this.comments.forEach(value => {
+  //       var subscription = this.userService.get(value.idUser).subscribe(ans2 => {
+  //         value.user = ans2;
+  //         subscription.unsubscribe();
+  //       })
+  //     })
+  //   })
+  // }
 async getCommentsByid(){
   await  this.contentService.getComments().subscribe(
       resultado => {
@@ -76,6 +93,14 @@ async getCommentsByid(){
       }
     )  
   }
+  async getAllUsers(){
+    await  this.userService.getAll().subscribe(
+        result => {
+          this.usersName = result;
+          console.log(result);
+        }
+      )  
+    }
   // filterComents(test: string){
   //   test = this.id;
   //   Array.filter

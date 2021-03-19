@@ -47,6 +47,10 @@ export class ContentService {
         dados => dados.map(d => ({ id: d.payload.doc.id, ...d.payload.doc.data() }))
       ))
   }
+  // getAllFromComments(id: string) {
+  //   return this.fireDB.collection<Comments>(this.ColletionComment, ref => ref.where('idtopic', '==', id).orderBy('date')).snapshotChanges().pipe(map(
+  //     ans => ans.map(d => ({ id: d.payload.doc.id, ...d.payload.doc.data(), date: new Date(d.payload.doc.data().date) }))));
+  // }
   gerarTodos() {
     return this.fireDB.collection<Topic>(this.ColletionTopic).snapshotChanges()
       .pipe(
