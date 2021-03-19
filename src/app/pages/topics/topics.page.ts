@@ -47,6 +47,12 @@ export class TopicsPage implements OnInit {
   ionViewWillEnter() {
     this.verfUser();
   }
+  ionViewWillLeave() {
+    this.currentUser = null;
+    this.id3 = null;
+    this.id2 = null;
+    this.id = null;
+   }
   async verfUser() {
     await this.userService.auth.user.subscribe(
       res => {
@@ -55,7 +61,7 @@ export class TopicsPage implements OnInit {
           this.userService.get(res.uid).subscribe(
             res => {
               this.currentUser = res;
-            }
+            } 
           )
       },
       err => {
