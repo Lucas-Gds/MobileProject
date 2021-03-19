@@ -8,15 +8,20 @@
 </ion-header>
 <ion-button color="warning" routerLink="/content-form" *ngIf="userForindex">Criar Tópico</ion-button>
 <ion-content>
- <div *ngIf="topics">
-  <ion-item lines="inset" *ngFor="let t of topics">
-    <title>{{t.title}}</title>
-    <p>{{t.content}}</p>
-  </ion-item>
- </div>
-    <div *ngIf="!topics">
+
+  <ion-item lines="inset" > 
+    <ion-grid *ngIf="topics">
+      <h3><strong>Tópicos Recentes</strong></h3>
+      <ion-row>
+        <ion-col size="12" *ngFor="let t of topics">       
+          <ion-item lines="inset" routerLink="/topics/{{t.id}}">
+            <ion-text>{{t.title}}</ion-text>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid *ngIf="!topics">
       <h2>Sem Novos Tópicos no Momento</h2>
-    </div>
-
-
+    </ion-grid>
+  </ion-item>
 </ion-content>

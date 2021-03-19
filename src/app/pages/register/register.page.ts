@@ -27,8 +27,6 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
   onSubmit(form) {
-    //console.log(this.usuario);
-    console.log(form);
     if (form.valid) {
       this.msg.presentLoading()
       if (!this.id) {
@@ -36,7 +34,7 @@ export class RegisterPage implements OnInit {
           res => {
             console.log("Cadastrado!", res);
             form.reset();
-            this.user = new User; // this.usuarios = []
+            this.user = new User; 
             this.msg.presentAlert("Aviso", "Usuario cadastrado!");
             this.msg.dismissLoading();
             this.router.navigate([""]);

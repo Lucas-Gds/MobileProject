@@ -5,7 +5,6 @@ export class Topic {
     topicId: string;
     content: string;
     date: Date;
-    IdUsercreateTopic: String;
+    idUser: string;
     UsercreateTopic: User;
-
 }

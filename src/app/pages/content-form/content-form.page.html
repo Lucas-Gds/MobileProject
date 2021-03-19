@@ -13,12 +13,9 @@
       <ion-label position="floating">titulo</ion-label>
       <ion-input type="text" name="title" [(ngModel)]=topic.title required></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label position="floating">texto</ion-label>
-      <ion-textarea type="email" name="content" [(ngModel)]=topic.content required></ion-textarea>
-    </ion-item>
     <!-- <ion-item>
-      <ion-text>{{idUser.id}}</ion-text>
+      <ion-label position="floating">texto</ion-label>
+      <ion-textarea type="text" name="content" [(ngModel)]=topic.content required></ion-textarea>
     </ion-item> -->
 <div>
   <ion-button type="submit" color="primary" expand="block" [disabled]="form.invalid">Criar Tópico</ion-button>

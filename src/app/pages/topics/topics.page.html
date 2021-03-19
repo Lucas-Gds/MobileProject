@@ -1,9 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>topics</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{topic.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <h5 style="margin-left: 10px">Created by: {{userPost.nome}}</h5>
+  <div *ngFor="let c of comments">
+    <ng-container *ngIf="c.idtopic == topic.topicId">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle></ion-card-subtitle>
+      <ion-card-title></ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{c.comment}}
+    </ion-card-content>
+  </ion-card>
+</ng-container>
+</div>
+  <ion-item>
+    <form (ngSubmit)="comentar(form)" #form="ngForm">
+    <ion-textarea type="text" name="comment.comment" [(ngModel)]=comment.comment required autoGrow=true maxlength="200"></ion-textarea>
+    <ion-button type="submit">Comentar</ion-button>
+  </form>
+  </ion-item>
+ 
 </ion-content>
