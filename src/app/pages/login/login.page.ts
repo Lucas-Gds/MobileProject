@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingsService } from 'src/app/services/loadings.service';
 import { UserService } from 'src/app/services/user.service';
+import { Platform } from '@ionic/angular'
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -11,17 +12,34 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginPage implements OnInit {
   public email:string = "";
   public senha:string = "";
+  public isApp:boolean;
 
   constructor(
     public usuarioService:UserService,
     private router:Router,
-    private msg:LoadingsService
+    private msg:LoadingsService,
+    public platform: Platform
     ) { 
-    
+      // this.platform.ready().then(() => {
+      //  this.testPlatform();
+      // });
+      platform.ready().then((readySource) => {
+        console.log('Width: ' + platform.width());
+        console.log('Height: ' + platform.height());
+    });
   }
 
   ngOnInit() {
   }
+  // testPlatform(){
+  //   if(this.platform.is('mobile') || this.platform.is('mobileweb')) {
+  //     this.isApp = false;
+  //     console.log(this.isApp);
+  //   } else if (this.platform.is('') || this.platform.is('ipad')){
+  //     this.isApp = true;
+  //     console.log(this.isApp);
+  //   }
+  // }
   onSubmit(form){
     this.usuarioService.auth.signInWithEmailAndPassword(this.email, this.senha).then(
       res=>{

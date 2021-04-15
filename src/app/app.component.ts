@@ -4,7 +4,7 @@ import { ActionSheetController } from '@ionic/angular';
 import { User } from './models/user';
 import { LoadingsService } from './services/loadings.service';
 import { UserService } from './services/user.service';
-import { IndexPage } from 'src/app/pages/index/index.page'
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -31,12 +31,13 @@ export class AppComponent {
     private router: Router,
     public msg: LoadingsService,
     public actionSheetController:ActionSheetController,
- //  public index: IndexPage 
+  
   ) { }
 
   async ngOnInit() {
     await this.verfUser();
   }
+ 
   async verfUser() {
     await this.userService.auth.user.subscribe(
       res => {
